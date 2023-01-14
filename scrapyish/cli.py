@@ -1,22 +1,25 @@
+import sys
+import os
 import asyncio
 import sys
 import argparse
-from scrapyish import spider
-from scrapyish.spider import Spider
-from scrapyish.crawler import Crawler
+from scrapyish.commands import crawl_command, build_project
 
-
-
-def get_spider_classes():
-    yield from filter(
-        lambda x: hasattr(x, 'name'),
-        map(lambda x: spider.__dict__[x],
-        dir(spider)))
-
-
-
-def start_spider(args):
-    for spiderclass in get_spider_classes():
-        if spiderclass.name == args.spidername:
-            crawler = Crawler(spiderclass)
-            asyncio.run(crawler.crawl())
+def execute(args: dict=None) -> None:
+    """Entry point and cli for the project."""
+    if args is None:
+        args = sys.argv[1:]
+    if len(args) == 0:
+        args = ["-h"]
+    parser = argparse.ArgumentParser("scrapyish", prefix_chars="-")
+    subparsers = parser.add_subparsers()
+    crawl_parser = subparsers.add_parser("crawl")
+    project_parser = subparsers.add_parser("startproject")
+    crawl_parser.add_argument("spidername", help="name of the spider to run")
+    crawl_parser.add_argument("-o", action="store", help="output file path")
+    project_parser.add_argument(
+        "project_name", help="name of project and directory to create")
+    crawl_parser.set_defaults(func=crawl_command)
+    project_parser.setdefaults(func=build_project)
+    args = parser.parse_args()
+    args.func()
