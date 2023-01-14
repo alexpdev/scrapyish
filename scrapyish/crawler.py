@@ -8,7 +8,7 @@ class Crawler:
     def __init__(self, spiderclass, settings=None):
         self.settings = settings
         self.spiderclass = spiderclass
-        self.signals = SignalManager(self)
+        # self.signals = SignalManager(self)
         self.crawling = False
         self.spider = None
 
@@ -19,11 +19,11 @@ class Crawler:
         self.spider = self.spiderclass(self)
         async with async_playwright() as playwright:
             self.browser = await playwright.chromium.launch()
-            asyncio.wait_for(self.run_spider())
+            await self.run_spider()
 
     async def run_spider(self):
         requests = []
-        async for request in self.spider.start_urls():
+        async for request in self.spider.start_requests():
             requests.append(request)
         await asyncio.gather(*[self.crawl_request(request) for request in requests])
 
@@ -31,10 +31,9 @@ class Crawler:
         page = await self.browser.new_page()
         await page.goto(request.url)
         html = await page.content()
-        response = HTMLResponse(request.url, body=html, encoding='utf8')
-        callback = request.callback
-        if request.callback is None:
+        response = HTMLResponse(request.url, body=html, encoding='utf8', page=page, browser=self.browser, request=request)
+        callback = request._callback
+        if request._callback is None:
             callback = self.spider.parse
         async for i in callback(response, **request.cb_kwargs):
             print(i)
-

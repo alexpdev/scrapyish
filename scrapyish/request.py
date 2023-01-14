@@ -39,7 +39,7 @@ class Response:
     comments_pattern = re.compile("<!--.*?(?:-->|$)", re.DOTALL)
 
 
-    def __init__(self, url, body, page, browser, request):
+    def __init__(self, url, body=None, page=None, browser=None, request=None, *args, **kwargs):
         self._url = url
         self._body = body
         self._page = page

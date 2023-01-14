@@ -20,6 +20,6 @@ class Selector(_ParselSelector):
             response = HTMLResponse(text, st)
         if response is not None:
             text = response.text
-            kwargs.setdefault('base_url', response.url)
+            kwargs.setdefault('base_url', response._url)
         self.response = response
         super().__init__(text=text, type=st, root=root, **kwargs)
