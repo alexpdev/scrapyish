@@ -1,10 +1,11 @@
 import os
 import argparse
+
 from scrapyish.crawler import Crawler
 
 
 def crawl_command(args: argparse.Namespace):
-    pass
+    crawler = Crawler(args.spiderclass)
 
 
 def build_project(args: argparse.Namespace):
@@ -12,4 +13,3 @@ def build_project(args: argparse.Namespace):
     if os.path.exists(path):
         raise FileExistsError
     os.mkdir(path)
-    

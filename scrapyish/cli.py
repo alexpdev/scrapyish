@@ -1,7 +1,4 @@
 import sys
-import os
-import asyncio
-import sys
 import argparse
 from scrapyish.commands import crawl_command, build_project
 

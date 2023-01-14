@@ -1,4 +1,4 @@
+from scrapyish.request import Response
 
-
-class Response():
+class HTMLResponse(Response):
     pass

@@ -5,19 +5,16 @@ More information can be found https://github.com/scrapy/scrapy.
 import logging
 from scrapyish.request import Request
 
-class Spider():
+class Spider:
     """
     Base class for scrapyish spiders.
     """
 
     name: str
 
-    def __init__(self, name=None, **kwargs):
+    def __init__(self, crawler, name=None):
         if name is not None:
             self.name = name
-        elif not getattr(self, 'name', None):
-            raise ValueError(f"{type(self).__name__} must have a name")
-        self.__dict__.update(kwargs)
         if not hasattr(self, 'start_urls'):
             self.start_urls = []
 
