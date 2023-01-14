@@ -1,5 +1,5 @@
 from parsel import Selector as _ParselSelector
-from scrapyish.response import HTMLResponse
+from scrapyish.http import Response
 
 
 class SelectorList(_ParselSelector.selectorlist_cls):
@@ -17,7 +17,7 @@ class Selector(_ParselSelector):
                              'both response and text')
         st = 'html'
         if text is not None:
-            response = HTMLResponse(text, st)
+            response = Response(text, st)
         if response is not None:
             text = response.text
             kwargs.setdefault('base_url', response._url)

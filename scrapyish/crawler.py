@@ -1,5 +1,4 @@
 import asyncio
-from scrapyish.signals import SignalManager
 from playwright.async_api import async_playwright
 from scrapyish.response import HTMLResponse
 
@@ -8,7 +7,6 @@ class Crawler:
     def __init__(self, spiderclass, settings=None):
         self.settings = settings
         self.spiderclass = spiderclass
-        # self.signals = SignalManager(self)
         self.crawling = False
         self.spider = None
 

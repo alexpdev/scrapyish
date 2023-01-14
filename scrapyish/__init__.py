@@ -1,5 +1,5 @@
 from scrapyish.spider import Spider
-from scrapyish.request import Request
+from scrapyish.http import Request
 
 
 __all__ = ["Spider", "Request"]

@@ -3,7 +3,7 @@ Spider base class was mostly copied from the original scrapy project.
 More information can be found https://github.com/scrapy/scrapy.
 """
 import logging
-from scrapyish.request import Request
+from scrapyish.http import Request
 
 class Spider:
     """
