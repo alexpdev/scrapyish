@@ -11,6 +11,11 @@ class Spider:
     """
 
     name: str
+    settings = {
+        "FEEDS_PATH": 'items.json',
+        "CONCURRENT_REQUESTS": '30',
+        "DOWNLOAD_DELAY": '0',
+    }
 
     def __init__(self, crawler, name=None):
         if name is not None:

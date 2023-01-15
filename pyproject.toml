@@ -33,12 +33,9 @@ classifiers = [
 dependencies = [
     'playwright',
     'setuptools',
-    'lxml>=4.3.0',
     'parsel',
+    'wheel'
 ]
-
-[project.scripts]
-scrapyish = "scrapyish.cli:execute"
 
 [project.urls]
 homepage = "https://github.com/alexpdev/scrapyish"
