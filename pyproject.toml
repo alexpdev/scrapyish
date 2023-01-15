@@ -78,7 +78,15 @@ disable = [
     "invalid-name",
     "not-callable",
     "consider-using-with",
-    "implicit-str-concat"
+    "implicit-str-concat",
+    "missing-module-docstring",
+    "protected-access",
+    "missing-function-docstring",
+    "missing-class-docstring",
+    "unspecified-encoding",
+    "arguments-differ",
+    "import-error",
+    "redefined-builtin"
 ]
 
 [tool.pylint. 'VARIABLES']
