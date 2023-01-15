@@ -7,7 +7,7 @@ name = 'Scrapyish'
 authors = [{name = "alexpdev", email = "alexpdev@pm.me"}]
 description='A high-level dynamic web content crawling and web scraping framework'
 license = {file = "LICENSE"}
-version = "0.0.1"
+version = "0.1.0"
 readme = "README.md"
 requires-python = ">=3.6"
 keywords = ["web-crawler", "web-scraping", "CLI"]
@@ -33,11 +33,9 @@ classifiers = [
 dependencies = [
     'playwright',
     'setuptools',
-    'lxml>=4.3.0',
+    'parsel',
+    'wheel'
 ]
-
-[project.scripts]
-scrapyish = "scrapyish.cli:execute"
 
 [project.urls]
 homepage = "https://github.com/alexpdev/scrapyish"
@@ -80,7 +78,15 @@ disable = [
     "invalid-name",
     "not-callable",
     "consider-using-with",
-    "implicit-str-concat"
+    "implicit-str-concat",
+    "missing-module-docstring",
+    "protected-access",
+    "missing-function-docstring",
+    "missing-class-docstring",
+    "unspecified-encoding",
+    "arguments-differ",
+    "import-error",
+    "redefined-builtin"
 ]
 
 [tool.pylint. 'VARIABLES']
