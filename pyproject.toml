@@ -7,7 +7,7 @@ name = 'Scrapyish'
 authors = [{name = "alexpdev", email = "alexpdev@pm.me"}]
 description='A high-level dynamic web content crawling and web scraping framework'
 license = {file = "LICENSE"}
-version = "0.0.2"
+version = "0.1.0"
 readme = "README.md"
 requires-python = ">=3.6"
 keywords = ["web-crawler", "web-scraping", "CLI"]

@@ -1,6 +1,6 @@
 
-build: clean # build wheel and sdist
-	python -m build --sdist
+build: test clean # build wheel and sdist
+	python -m build --sdist --wheel
 
 
 release: build # upload to twine
@@ -17,7 +17,10 @@ clean: # clean directory
 	rm -rfv htmlcov/
 	rm -rfv .coverage
 
-push: clean # push to repo
+push: test clean # push to repo
 	git add .
 	git commit -m "$m pushing"
 	git push
+
+test: clean # run unit tests
+	tox
